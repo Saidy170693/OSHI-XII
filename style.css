@@ -1,0 +1,348 @@
+/* style.css for OSHI XII - Greater Living & Leisure */
+
+/* ========== CSS RESET & BASE STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Source Code Pro', monospace;
+    color: #000000; /* Black text */
+    background-color: #FFFFFF; /* White background */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ========== COLOR VARIABLES ========== */
+:root {
+    --beige: #D3B896;
+    --black: #000000;
+    --white: #FFFFFF;
+    --text-black: #000000;
+    --text-beige: #D3B896;
+    --bg-white: #FFFFFF;
+    --bg-beige: #D3B896;
+}
+
+/* ========== TYPOGRAPHY ========== */
+/* SuperClarendon for company name */
+@font-face {
+    font-family: 'SuperClarendon';
+    src: url('../fonts/SuperClarendon-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.company-name {
+    font-family: 'SuperClarendon', serif;
+    text-transform: uppercase;
+    font-size: 31.49pt; /* Exact size from specs */
+    letter-spacing: normal;
+    color: var(--black);
+}
+
+.company-name-large {
+    font-size: 54.54pt; /* Large version */
+}
+
+.xii {
+    font-family: 'SuperClarendon', serif;
+    font-size: 15.74pt;
+    text-transform: uppercase;
+    color: var(--black);
+}
+
+.slogan {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 7pt;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    color: var(--black);
+}
+
+h1, h2, h3 {
+    font-family: 'SuperClarendon', serif;
+    font-weight: normal;
+    color: var(--black);
+}
+
+h1 {
+    font-size: 54px;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* ========== LAYOUT & CONTAINERS ========== */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+section {
+    padding: 100px 0;
+}
+
+/* ========== HEADER & NAVIGATION ========== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 40px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--beige);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-icon:hover,
+.nav-icon.active {
+    fill: var(--black);
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding: 0 40px;
+}
+
+.hero-content {
+    max-width: 600px;
+    margin-bottom: 60px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+    padding: 12px 30px;
+    border: 1px solid var(--beige);
+    background: transparent;
+    color: var(--black);
+    font-family: 'Source Code Pro', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--beige);
+    color: var(--white);
+}
+
+.btn-filled {
+    background-color: var(--beige);
+    color: var(--white);
+}
+
+.btn-filled:hover {
+    background-color: var(--black);
+    border-color: var(--black);
+}
+
+/* ========== SERVICE CARDS ========== */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.service-card {
+    border: 1px solid var(--beige);
+    padding: 40px;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== SOCIAL MEDIA ========== */
+.social-media {
+    background-color: var(--beige);
+    text-align: center;
+    padding: 80px 0;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--black);
+    transition: fill 0.3s ease;
+}
+
+.social-icon:hover {
+    fill: var(--white);
+}
+
+/* ========== CONTACT SECTION ========== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 60px;
+    margin-top: 60px;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid var(--beige);
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 30px;
+    }
+    
+    h1 {
+        font-size: 42px;
+    }
+    
+    h2 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .company-name {
+        font-size: 24pt;
+    }
+    
+    .hero {
+        padding: 0 30px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-links {
+        gap: 20px;
+    }
+    
+    section {
+        padding: 80px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    header {
+        padding: 20px;
+    }
+    
+    .logo-img {
+        height: 30px;
+    }
+    
+    h1 {
+        font-size: 36px;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+} 

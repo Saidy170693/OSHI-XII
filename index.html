@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSHI XII - Greater Living</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400&display=swap">
+    <style>
+        /* === CSS Reset & Base Styles === */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        /* === Font Faces === */
+        @font-face {
+            font-family: 'SuperClarendon';
+            src: url('path-to-your-font/SuperClarendon.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        /* === Color Variables === */
+        :root {
+            --beige: #D3B896;
+            --black: #000000;
+            --white: #FFFFFF;
+        }
+        
+        /* === Typography === */
+        body {
+            font-family: 'Source Code Pro', monospace;
+            color: var(--black);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .company-name {
+            font-family: 'SuperClarendon', serif;
+            text-transform: uppercase;
+            font-size: 31.49pt;
+            letter-spacing: normal;
+        }
+        
+        .company-name-large {
+            font-size: 54.54pt;
+        }
+        
+        .xii {
+            font-family: 'SuperClarendon', serif;
+            font-size: 15.74pt;
+            text-transform: uppercase;
+        }
+        
+        .slogan {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 7pt;
+            text-transform: capitalize;
+            letter-spacing: 2px;
+        }
+        
+        /* === Layout === */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* === Header & Navigation === */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+        
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: baseline;
+        }
+        
+        .logo-container img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--beige);
+            transition: fill 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-icon:hover, .nav-icon.active {
+            fill: var(--black);
+        }
+        
+        /* === Hero Section === */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-family: 'SuperClarendon', serif;
+            font-size: 54px;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+        
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: 1px solid var(--beige);
+            background: transparent;
+            color: var(--black);
+            font-family: 'Source Code Pro', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--beige);
+            color: var(--white);
+        }
+        
+        .btn-filled {
+            background-color: var(--beige);
+            color: var(--white);
+        }
+        
+        .btn-filled:hover {
+            background-color: var(--black);
+            border-color: var(--black);
+        }
+        
+        /* === Services Section === */
+        .services {
+            padding: 100px 40px;
+            background-color: var(--white); 
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .service-card {
+            border: 1px solid var(--beige);
+            padding: 40px;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card h3 {
+            font-family: 'SuperClarendon', serif;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+        
+        /* === Social Media Section === */
+        .social-media {
+            padding: 60px 40px;
+            background-color: var(--beige);
+            text-align: center;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--black);
+            transition: fill 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            fill: var(--white);
+        }
+        
+        /* === Contact Section === */
+        .contact {
+            padding: 100px 40px;
+            background-color: var(--white);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            margin-top: 60px;
+        }
+        
+        .contact-info h3 {
+            font-family: 'SuperClarendon', serif;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        
+        /* === Footer === */
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid var(--beige);
+        }
+        
+        /* === Responsive Design === */
+        @media (max-width: 768px) {
+            .company-name {
+                font-size: 24pt;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Navigation -->
+    <header id="main-header">
+        <div class="logo-container">
+            <!-- Replace with your actual logo -->
+            <img src="path-to-your-logo/oshi-xii-logo.png" alt="OSHI XII Logo">
+            <div>
+                <span class="company-name">oshi</span>
+                <span class="xii">xii</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="#properties"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg></a>
+            <a href="#nutrition"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2L4 7v10l8 5 8-5V7L12 2z"></path></svg></a>
+            <a href="#vacation"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M8 3v3a2 2 0 0 1-2 2H3v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8h-3a2 2 0 0 1-2-2V3"></path><path d="M3 12h18"></path></svg></a>
+            <a href="#lifestyle"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
+            <a href="#concierge"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y3="4"></line><line x1="10" y1="1" x2="10" y3="4"></line><line x1="14" y1="1" x2="14" y3="4"></line></svg></a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+
+            
+
+            <p>Welcome to OSHI XII, Where we celebrate the art of greater living. Under the OSHI XII umbrella, our brand encompasses premium goods & services, hospitality,real estate and tourism, offering a curated collection of products and experiences that embody the essence of greater living.</p>
+            <p>Discover Africa and the rest of the world with us as we embark on a journey of exploration and discovery. From bespoke experiences and unforgettable hospitality to immersive tourism adventures, OSHI XII Greater Living invites you to indulge in the finer things in life.</p>
+            <div class="hero-buttons">
+                <a href="#explore" class="btn btn-filled">Explore</a>
+                <a href="#contact" class="btn">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties & Experiences Section -->
+    <section id="properties" class="services">
+        <div class="container">
+            <h2>Properties & Experiences</h2>
+            <p>Welcome to OSHI XII - Enjoy Life Properly With Us. Your Expert in Lifestyle management and Travel.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Luxury Residences</h3>
+                    <p>Exclusive properties in prime locations across Africa and beyond.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Safari Experiences</h3>
+                    <p>Curated wildlife adventures that connect you with nature.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Urban Retreats</h3>
+                    <p>Sophisticated city accommodations with premium amenities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nutrition & Longevity Section -->
+    <section id="nutrition" class="services">
+        <div class="container">
+            <h2>Nutrition & Longevity</h2>
+            <p>Holistic wellness programs designed for optimal health and vitality.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Personalized Nutrition</h3>
+                    <p>Custom meal plans tailored to your unique biochemistry.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Wellness Retreats</h3>
+                    <p>Transformative programs in breathtaking locations.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Longevity Protocols</h3>
+                    <p>Science-backed approaches to extending healthspan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vacation Rental Section -->
+    <section id="vacation" class="services">
+        <div class="container">
+            <h2>Vacation Rentals</h2>
+            <p>Exceptional properties for unforgettable getaways.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Beach Villas</h3>
+                    <p>Private coastal retreats with stunning ocean views.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Mountain Lodges</h3>
+                    <p>secluded nature escapes in Africa.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Cultural Stays</h3>
+                    <p>Authentic accommodations that immerse you in local traditions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lifestyle Management Section -->
+    <section id="lifestyle" class="services">
+        <div class="container">
+            <h2>Lifestyle Management</h2>
+            <p>Comprehensive services to elevate every aspect of your life.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Personal Assistance</h3>
+                    <p>Dedicated support for your daily needs and special requests.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Event Planning</h3>
+                    <p>Impeccably executed celebrations and gatherings.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Membership Access</h3>
+                    <p>Exclusive entry to private clubs and premium venues.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concierge Section -->
+    <section id="concierge" class="services">
+        <div class="container">
+            <h2>Concierge Services</h2>
+            <p>Specialized in you. Our mission is to make you feel special and taken care of.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Travel Coordination</h3>
+                    <p>Seamless logistics for stress-free journeys.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Dining Reservations</h3>
+                    <p>Access to the most sought-after tables worldwide.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Special Requests</h3>
+                    <p>No demand is too extraordinary for our team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-media">
+        <div class="container">
+            <h2>Connect With Us</h2>
+            <p>Join us on a journey to discover the art of greater living.</p>
+            
+            <div class="social-icons">
+                <a href="https://instagram.com" target="_blank">
+                    <svg class="social-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <svg class="social-icon" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                </a>
+                <a href="https://linkedin.com" target="_blank">
+                    <svg class="social-icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="https://tiktok.com" target="_blank">
+                    <svg class="social-icon" viewBox="0 0 24 24"><path d="M21 7.78a7.89 7.89 0 0 1-2.35-.35 4.26 4.26 0 0 0 1.9-2.35l.07-.22h-1.65a4.26 4.26 0 0 1-3.88 3.89v1.66a7.89 7.89 0 0 0 6.81-6.81h-1.66a4.26 4.26 0 0 0-4.26 4.26V12a4.26 4.26 0 1 1-4.26-4.26v1.66A8.6 8.6 0 1 0 21 7.78z"></path></svg>
+                </a>
+                <a href="https://youtube.com" target="_blank">
+                    <svg class="social-icon" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Let's discover Africa and the world together and embrace the art of greater living with OSHI XII..</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Head Office - Livingstone</h3>
+                    <p>12 Greater Living Avenue</p>
+                    <p>Livingstone, Zambia</p>
+                    <p>+260 977 967 804</p>
+                </div>
+                <div class="contact-info">
+                    <h3>Cape Town Office</h3>
+                    <p>12 Leisure Drive</p>
+                    <p>Cape Town, South Africa</p>
+                    <p>+27 718 462 380</p>
+                </div>
+                <div class="contact-info">
+                    <h3>General Inquiries</h3>
+                    <p>info@oshixii.com</p>
+                    <p>bookings@oshixii.com</p>
+                    <p>concierge@oshixii.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 OSHI XII - Greater Living. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Active nav icon highlighting
+        document.querySelectorAll('.nav-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                document.querySelectorAll('.nav-icon').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
